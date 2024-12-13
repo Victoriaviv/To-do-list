@@ -1,15 +1,4 @@
 
-
-
-var list = document.querySelector('ul');
-
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-  console.log()
-}, false);
 var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
@@ -29,6 +18,7 @@ for (i = 0; i < close.length; i++) {
     div.style.display = "none";
   }
 }
+
 function addTask() {
   const taskInput = document.getElementById('taskInput');
   const taskText = taskInput.value.trim();
@@ -46,18 +36,14 @@ function addTask() {
   list.appendChild(li);
   
   taskInput.value = "";
-
-// Select all the checkboxes
-const checkboxes = document.querySelectorAll('.task-checkbox');
-
-// Add event listener to each checkbox
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener('change', (e) => {
-    const taskText = e.target.nextElementSibling; // Get the span element
-    if (e.target.checked) {
-      taskText.classList.add('checked'); // Add checked class
-    } else {
-      taskText.classList.remove('checked'); // Remove checked class
+}
+const inputField = document.getElementById('inputField');
+  const list = document.getElementById('list');
+  inputField.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter' && inputField.value.trim()) {
+      const newItem = document.createElement('li');
+      newItem.textContent = inputField.value;
+      list.appendChild(newItem);
+      inputField.value = '';
     }
   });
-});
